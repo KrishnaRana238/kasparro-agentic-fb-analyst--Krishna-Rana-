@@ -1,0 +1,9 @@
+python: "3"
+random_seed: 42
+confidence_min: 0.6
+
+# Data path (relative to project root)
+data_csv: "./data/synthetic_fb_ads_undergarments.csv"
+
+report_dir: "./reports"
+log_dir: "./logs"

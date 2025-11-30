@@ -1,0 +1,639 @@
+{
+  "query": "Analyze ROAS drop",
+  "plan": [
+    {
+      "id": "load_and_summary",
+      "desc": "Load CSV and compute aggregate summaries",
+      "params": {}
+    },
+    {
+      "id": "trend_analysis",
+      "desc": "Analyze ROAS / CTR / Spend trends over time",
+      "params": {
+        "window": 7
+      }
+    },
+    {
+      "id": "segment_analysis",
+      "desc": "Segment-level analysis: by campaign/adset/audience/creative_type",
+      "params": {}
+    },
+    {
+      "id": "hypothesis_generation",
+      "desc": "Generate hypotheses for observed changes",
+      "params": {}
+    },
+    {
+      "id": "validate_hypotheses",
+      "desc": "Run statistical checks and compute confidence",
+      "params": {}
+    },
+    {
+      "id": "creative_generation",
+      "desc": "Generate new creative messages for low-CTR campaigns",
+      "params": {}
+    },
+    {
+      "id": "assemble_report",
+      "desc": "Write final report and artifacts",
+      "params": {}
+    }
+  ],
+  "steps": [
+    {
+      "step": "load_and_summary",
+      "summary": {
+        "rows": 4500,
+        "date_range": {
+          "min": "2025-01-01 00:00:00",
+          "max": "2025-03-31 00:00:00"
+        },
+        "metrics": {
+          "total_spend": 2105579.9,
+          "total_revenue": 12265700.719999999,
+          "avg_roas": 9.634399910932975,
+          "avg_ctr": 0.013065511111111112
+        },
+        "top_spend_campaigns": {
+          "Men Premium Modal": 100371.84,
+          "Men Bold Colors Drop": 93111.31,
+          "MEN Signature Soft": 79640.54,
+          "women Summer Invisible": 74752.86,
+          "WOMEN Seamless Everyday": 73693.9
+        },
+        "low_roas_campaigns": {
+          "Men  Bold  Coors  Drop": 0.17,
+          "MEN COMFORTMA LAUNCH": 0.22,
+          "men sig ature soft": 0.24,
+          "Men Bold Colors Dr p": 0.24,
+          "MEN BOLD COL RS DROP": 0.28
+        }
+      }
+    },
+    {
+      "step": "hypothesis_generation",
+      "hypotheses": [
+        {
+          "campaign": "MEN  Signature  Soft",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 28.34% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.013676470588235295,
+            "ctr_recent": 0.0098,
+            "drop_pct": 0.2834408602150538
+          }
+        },
+        {
+          "campaign": "Men  Premium  Modal",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 19.57% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.010816666666666667,
+            "ctr_recent": 0.0087,
+            "drop_pct": 0.19568567026194153
+          }
+        },
+        {
+          "campaign": "Men  |  Athleisure  Cooling",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 13.52% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.02275,
+            "ctr_recent": 0.019674999999999998,
+            "drop_pct": 0.13516483516483524
+          }
+        },
+        {
+          "campaign": "Men_Bold_Colors_Drop",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 48.80% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.010254545454545454,
+            "ctr_recent": 0.00525,
+            "drop_pct": 0.48803191489361697
+          }
+        },
+        {
+          "campaign": "Men_ComfortMax_Launch",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 19.38% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.015958823529411765,
+            "ctr_recent": 0.012866666666666665,
+            "drop_pct": 0.19375844698365904
+          }
+        },
+        {
+          "campaign": "Men_|_Athleisure_Cooling",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 20.03% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.0223,
+            "ctr_recent": 0.017833333333333333,
+            "drop_pct": 0.2002989536621824
+          }
+        },
+        {
+          "campaign": "WOMEN  Cotton  Classics",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 22.16% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.011022222222222221,
+            "ctr_recent": 0.00858,
+            "drop_pct": 0.22157258064516117
+          }
+        },
+        {
+          "campaign": "WOMEN COTTON CLASSICS",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 13.46% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.0111625,
+            "ctr_recent": 0.00966,
+            "drop_pct": 0.1346024636058231
+          }
+        },
+        {
+          "campaign": "WOMEN Coton Classics",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 24.29% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.014,
+            "ctr_recent": 0.0106,
+            "drop_pct": 0.24285714285714288
+          }
+        },
+        {
+          "campaign": "WOMEN | STUDIO SPORTS",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 15.72% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.012666666666666666,
+            "ctr_recent": 0.010675,
+            "drop_pct": 0.1572368421052631
+          }
+        },
+        {
+          "campaign": "Women | Studio Sports",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 15.59% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.01159,
+            "ctr_recent": 0.009783333333333333,
+            "drop_pct": 0.15588150704630427
+          }
+        },
+        {
+          "campaign": "Women_Fit_&_Lift",
+          "type": "ctr_drop",
+          "desc": "CTR dropped by 24.69% comparing last 7 days to previous 21 days",
+          "evidence": {
+            "ctr_prev": 0.018483333333333334,
+            "ctr_recent": 0.013919999999999998,
+            "drop_pct": 0.2468890892696124
+          }
+        }
+      ]
+    },
+    {
+      "step": "validate_hypotheses",
+      "results": [
+        {
+          "hypothesis": {
+            "campaign": "MEN  Signature  Soft",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 28.34% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.013676470588235295,
+              "ctr_recent": 0.0098,
+              "drop_pct": 0.2834408602150538
+            }
+          },
+          "validation": {
+            "campaign": "MEN  Signature  Soft",
+            "status": "insufficient_data",
+            "confidence": 0.0
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "Men  Premium  Modal",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 19.57% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.010816666666666667,
+              "ctr_recent": 0.0087,
+              "drop_pct": 0.19568567026194153
+            }
+          },
+          "validation": {
+            "campaign": "Men  Premium  Modal",
+            "p_value": 0.3795120918564718,
+            "drop_pct": 0.19908466819221954,
+            "mean_prev": 0.010924999999999999,
+            "mean_recent": 0.00875,
+            "confidence": 0.6204879081435282,
+            "validated": true
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "Men  |  Athleisure  Cooling",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 13.52% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.02275,
+              "ctr_recent": 0.019674999999999998,
+              "drop_pct": 0.13516483516483524
+            }
+          },
+          "validation": {
+            "campaign": "Men  |  Athleisure  Cooling",
+            "p_value": 0.3779245844979999,
+            "drop_pct": 0.13516483516483535,
+            "mean_prev": 0.022750000000000003,
+            "mean_recent": 0.019674999999999998,
+            "confidence": 0.6220754155020001,
+            "validated": true
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "Men_Bold_Colors_Drop",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 48.80% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.010254545454545454,
+              "ctr_recent": 0.00525,
+              "drop_pct": 0.48803191489361697
+            }
+          },
+          "validation": {
+            "campaign": "Men_Bold_Colors_Drop",
+            "status": "insufficient_data",
+            "confidence": 0.0
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "Men_ComfortMax_Launch",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 19.38% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.015958823529411765,
+              "ctr_recent": 0.012866666666666665,
+              "drop_pct": 0.19375844698365904
+            }
+          },
+          "validation": {
+            "campaign": "Men_ComfortMax_Launch",
+            "p_value": 0.38248851086396063,
+            "drop_pct": 0.14316163410301935,
+            "mean_prev": 0.015638888888888886,
+            "mean_recent": 0.0134,
+            "confidence": 0.6175114891360394,
+            "validated": true
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "Men_|_Athleisure_Cooling",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 20.03% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.0223,
+              "ctr_recent": 0.017833333333333333,
+              "drop_pct": 0.2002989536621824
+            }
+          },
+          "validation": {
+            "campaign": "Men_|_Athleisure_Cooling",
+            "status": "insufficient_data",
+            "confidence": 0.0
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "WOMEN  Cotton  Classics",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 22.16% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.011022222222222221,
+              "ctr_recent": 0.00858,
+              "drop_pct": 0.22157258064516117
+            }
+          },
+          "validation": {
+            "campaign": "WOMEN  Cotton  Classics",
+            "p_value": 0.777673462285591,
+            "drop_pct": 0.08816637375512588,
+            "mean_prev": 0.010345454545454545,
+            "mean_recent": 0.009433333333333334,
+            "confidence": 0.22232653771440902,
+            "validated": false
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "WOMEN COTTON CLASSICS",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 13.46% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.0111625,
+              "ctr_recent": 0.00966,
+              "drop_pct": 0.1346024636058231
+            }
+          },
+          "validation": {
+            "campaign": "WOMEN COTTON CLASSICS",
+            "p_value": 0.2849713576736716,
+            "drop_pct": 0.24709020368574194,
+            "mean_prev": 0.011455555555555556,
+            "mean_recent": 0.008625,
+            "confidence": 0.7150286423263283,
+            "validated": true
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "WOMEN Coton Classics",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 24.29% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.014,
+              "ctr_recent": 0.0106,
+              "drop_pct": 0.24285714285714288
+            }
+          },
+          "validation": {
+            "campaign": "WOMEN Coton Classics",
+            "status": "insufficient_data",
+            "confidence": 0.0
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "WOMEN | STUDIO SPORTS",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 15.72% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.012666666666666666,
+              "ctr_recent": 0.010675,
+              "drop_pct": 0.1572368421052631
+            }
+          },
+          "validation": {
+            "campaign": "WOMEN | STUDIO SPORTS",
+            "p_value": 0.13934804127615158,
+            "drop_pct": 0.18038331454340453,
+            "mean_prev": 0.012671428571428571,
+            "mean_recent": 0.010385714285714288,
+            "confidence": 0.8606519587238484,
+            "validated": true
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "Women | Studio Sports",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 15.59% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.01159,
+              "ctr_recent": 0.009783333333333333,
+              "drop_pct": 0.15588150704630427
+            }
+          },
+          "validation": {
+            "campaign": "Women | Studio Sports",
+            "p_value": 0.08593871902234655,
+            "drop_pct": 0.17024846039498834,
+            "mean_prev": 0.011485365853658537,
+            "mean_recent": 0.00953,
+            "confidence": 0.9140612809776535,
+            "validated": true
+          }
+        },
+        {
+          "hypothesis": {
+            "campaign": "Women_Fit_&_Lift",
+            "type": "ctr_drop",
+            "desc": "CTR dropped by 24.69% comparing last 7 days to previous 21 days",
+            "evidence": {
+              "ctr_prev": 0.018483333333333334,
+              "ctr_recent": 0.013919999999999998,
+              "drop_pct": 0.2468890892696124
+            }
+          },
+          "validation": {
+            "campaign": "Women_Fit_&_Lift",
+            "p_value": 0.05343264057286303,
+            "drop_pct": 0.2468890892696124,
+            "mean_prev": 0.018483333333333334,
+            "mean_recent": 0.013919999999999998,
+            "confidence": 0.946567359427137,
+            "validated": true
+          }
+        }
+      ]
+    },
+    {
+      "step": "creative_generation",
+      "low_ctr_campaigns": [
+        " OMEN COTTON CLASSICS",
+        "-omen-Studio Sports",
+        "M-n Bold Colors Drop",
+        "MEN  Signture  Soft",
+        "MEN B LD COLORS DROP",
+        "MEN BOL COLORS DROP",
+        "MEN BOLD  OLORS DROP",
+        "MEN BOLD COL RS DROP",
+        "MEN BOLD COLORS DROP",
+        "MEN COMFORTMA LAUNCH",
+        "MEN PREMIUM MOD-L",
+        "Me   Premium  Modal",
+        "Men  Bold  Colors  Drop",
+        "Men  Bold  Coors  Drop",
+        "Men -old Colors Drop",
+        "Men B-ld Colors Drop",
+        "Men Bol Colors Drop",
+        "Men Bold -olors Drop",
+        "Men Bold Col-rs Drop",
+        "Men Bold Colors Dr p",
+        "Men Bold Colors Drop",
+        "Men BoldColors Drop",
+        "Men Prem um Modal",
+        "Men Premium -odal",
+        "Men remium Modal",
+        "Men- Premium  Modal",
+        "Men_Bold_Colors_Drop",
+        "W MEN Cotton Classics",
+        "W men Summer Invisible",
+        "WOEN  Cotton  Classics",
+        "WOEN FIT & LIFT",
+        "WOMEN  -eamless  Everyday",
+        "WOMEN  Seamles   Everyday",
+        "WOMEN  Seamless  Everyday",
+        "WOMEN COTTON CLASSIS",
+        "WOMEN Cot-on Classics",
+        "WOMEN SEAM ESS EVERYDAY",
+        "WOMEN SEAMLESS EV RYDAY",
+        "WOMEN SEAMLESS EVE YDAY",
+        "WOMEN SEAMLESS EVERYDAY",
+        "WOMEN Seamless Eeryday",
+        "WOMEN Seamless Everyday",
+        "WOMEN Seamless Everydy",
+        "WOMEN Semless Everyday",
+        "WOMEN eamless Everyday",
+        "WOMEN | SUDIO SPORTS",
+        "WOMENSeamless Everyday",
+        "WOMEN_Cot-on_Classics",
+        "WOMEN_Seamless_Ever-day",
+        "WOMEN_Seamless_Everyday",
+        "WOMN_Cotton_Classics",
+        "Wmen | Studio Sports",
+        "Women C-tton Classics",
+        "Women Co-ton Classics",
+        "Women Cottn Classics",
+        "Women Cotton lassics",
+        "Women Fit  Lift",
+        "Women Seamless Everyday",
+        "Women Summer In-isible",
+        "Women | Stu io Sports",
+        "Women | Studio Spo-ts",
+        "Women-Studio -ports",
+        "Women-Studio S orts",
+        "Women-Studio-Sports",
+        "WomenCotton Classics",
+        "Women_|-Studio_Sports",
+        "me bold colors drop",
+        "men bld colors drop",
+        "men bold colors drop",
+        "w men cotton classics",
+        "w-men cotton classics",
+        "wo-en seamless everyday",
+        "women  Summ r  Invisible",
+        "women  Summer  Invi ible",
+        "women Su mer Invisible",
+        "women Summer In-isible",
+        "women Summer Invisble",
+        "women Summer Invisi-le",
+        "women c-tton classics",
+        "women cott n classics",
+        "women fit & li t",
+        "women s amless everyday",
+        "women s-mmer invisible",
+        "women seam-ess everyday",
+        "women seamess everyday",
+        "women seamless everday",
+        "women seamless everyday",
+        "women seamless-everyday",
+        "women su-mer invisible",
+        "women summe- invisible",
+        "women summer in isible",
+        "women | studio spo ts",
+        "women_Summe _Invisible",
+        "women_Summer_Inisible",
+        "women_Summer_Invisi-le",
+        "womn cotton classics"
+      ],
+      "creatives_sample_count": {
+        " OMEN COTTON CLASSICS": 6,
+        "-omen-Studio Sports": 6,
+        "M-n Bold Colors Drop": 6,
+        "MEN  Signture  Soft": 6,
+        "MEN B LD COLORS DROP": 6,
+        "MEN BOL COLORS DROP": 6,
+        "MEN BOLD  OLORS DROP": 6,
+        "MEN BOLD COL RS DROP": 6,
+        "MEN BOLD COLORS DROP": 6,
+        "MEN COMFORTMA LAUNCH": 6,
+        "MEN PREMIUM MOD-L": 6,
+        "Me   Premium  Modal": 6,
+        "Men  Bold  Colors  Drop": 6,
+        "Men  Bold  Coors  Drop": 6,
+        "Men -old Colors Drop": 6,
+        "Men B-ld Colors Drop": 6,
+        "Men Bol Colors Drop": 6,
+        "Men Bold -olors Drop": 6,
+        "Men Bold Col-rs Drop": 6,
+        "Men Bold Colors Dr p": 6,
+        "Men Bold Colors Drop": 6,
+        "Men BoldColors Drop": 6,
+        "Men Prem um Modal": 6,
+        "Men Premium -odal": 6,
+        "Men remium Modal": 6,
+        "Men- Premium  Modal": 6,
+        "Men_Bold_Colors_Drop": 6,
+        "W MEN Cotton Classics": 6,
+        "W men Summer Invisible": 6,
+        "WOEN  Cotton  Classics": 6,
+        "WOEN FIT & LIFT": 6,
+        "WOMEN  -eamless  Everyday": 6,
+        "WOMEN  Seamles   Everyday": 6,
+        "WOMEN  Seamless  Everyday": 6,
+        "WOMEN COTTON CLASSIS": 6,
+        "WOMEN Cot-on Classics": 6,
+        "WOMEN SEAM ESS EVERYDAY": 6,
+        "WOMEN SEAMLESS EV RYDAY": 6,
+        "WOMEN SEAMLESS EVE YDAY": 6,
+        "WOMEN SEAMLESS EVERYDAY": 6,
+        "WOMEN Seamless Eeryday": 6,
+        "WOMEN Seamless Everyday": 6,
+        "WOMEN Seamless Everydy": 6,
+        "WOMEN Semless Everyday": 6,
+        "WOMEN eamless Everyday": 6,
+        "WOMEN | SUDIO SPORTS": 6,
+        "WOMENSeamless Everyday": 6,
+        "WOMEN_Cot-on_Classics": 6,
+        "WOMEN_Seamless_Ever-day": 6,
+        "WOMEN_Seamless_Everyday": 6,
+        "WOMN_Cotton_Classics": 6,
+        "Wmen | Studio Sports": 6,
+        "Women C-tton Classics": 6,
+        "Women Co-ton Classics": 6,
+        "Women Cottn Classics": 6,
+        "Women Cotton lassics": 6,
+        "Women Fit  Lift": 6,
+        "Women Seamless Everyday": 6,
+        "Women Summer In-isible": 6,
+        "Women | Stu io Sports": 6,
+        "Women | Studio Spo-ts": 6,
+        "Women-Studio -ports": 6,
+        "Women-Studio S orts": 6,
+        "Women-Studio-Sports": 6,
+        "WomenCotton Classics": 6,
+        "Women_|-Studio_Sports": 6,
+        "me bold colors drop": 6,
+        "men bld colors drop": 6,
+        "men bold colors drop": 6,
+        "w men cotton classics": 6,
+        "w-men cotton classics": 6,
+        "wo-en seamless everyday": 6,
+        "women  Summ r  Invisible": 6,
+        "women  Summer  Invi ible": 6,
+        "women Su mer Invisible": 6,
+        "women Summer In-isible": 6,
+        "women Summer Invisble": 6,
+        "women Summer Invisi-le": 6,
+        "women c-tton classics": 6,
+        "women cott n classics": 6,
+        "women fit & li t": 6,
+        "women s amless everyday": 6,
+        "women s-mmer invisible": 6,
+        "women seam-ess everyday": 6,
+        "women seamess everyday": 6,
+        "women seamless everday": 6,
+        "women seamless everyday": 6,
+        "women seamless-everyday": 6,
+        "women su-mer invisible": 6,
+        "women summe- invisible": 6,
+        "women summer in isible": 6,
+        "women | studio spo ts": 6,
+        "women_Summe _Invisible": 6,
+        "women_Summer_Inisible": 6,
+        "women_Summer_Invisi-le": 6,
+        "womn cotton classics": 6
+      }
+    }
+  ]
+}
